@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Dela_Gothic_One, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+    import localFont from 'next/font/local';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -10,6 +10,101 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+const dela_gothic = Dela_Gothic_One({
+  subsets : ["latin", "cyrillic", "vietnamese", "latin-ext"],
+  weight : ["400"],
+  variable : "--font-dela-gothic"
+})
+const metropolis = localFont({
+  src: [
+    {
+      path: "./fonts/Metropolis-Thin.otf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-ThinItalic.otf",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-ExtraLight.otf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-ExtraLightItalic.otf",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-LightItalic.otf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-RegularItalic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-MediumItalic.otf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-SemiBold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-SemiBoldItalic.otf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-BoldItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-ExtraBold.otf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Metropolis-ExtraBoldItalic.otf",
+      weight: "800",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Metropolis-BlackItalic.otf",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-metropolis",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +120,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dela_gothic.variable} ${metropolis.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,9 +1,31 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
-
+import { ToastContainer, toast } from 'react-toastify'
 const Hero = () => {
+  const [email, setEmail] = React.useState("")
+  const [college, setCollege] = React.useState("")
+  const [loading, setLoading] = React.useState(false)
+  const handleSubmit = async ()=>{
+    setLoading(true)
+    const data = {email, college}
+    const response = await fetch("https://rollcall-backend.vercel.app/api/v1/query/query",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if(response.ok){
+      toast("Submitted successfully!")
+      setEmail("")
+      setCollege("")
+      setLoading(false)
+    }
+  }
   return (
     <div>
+      <ToastContainer/>
 
       {/* HERO SECTION */}
       <div className="flex flex-col md:flex-row justify-between p-8 md:p-24 items-center gap-12">
@@ -80,15 +102,21 @@ const Hero = () => {
             className="p-4 text-white bg-[#FFFFFF]/10 rounded-lg font-metropolis font-normal outline-none" 
             placeholder="college" 
             type="text" 
+            value={college}
+            onChange={(e) => setCollege(e.target.value)}
           />
           <input 
             className="p-4 text-white bg-[#FFFFFF]/10 rounded-lg font-metropolis font-normal outline-none" 
             placeholder="email" 
             type="text" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button 
-            className="mt-4 p-4 rounded-lg bg-[#F43F5E] text-white font-metropolis font-bold">
-            Submit
+            className="mt-4 p-4 rounded-lg bg-[#F43F5E] text-white font-metropolis font-bold cursor-pointer"
+            onClick={handleSubmit}
+          >
+           {loading ? "Submitting..." : "Submit"}
           </button>
         </div>
       </div>

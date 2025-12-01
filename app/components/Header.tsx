@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center px-6 md:px-16 py-6 border border-b-gray-300 border-t-0 border-x-0">
+    <div className="flex justify-between items-center px-6 md:px-16 py-6 border border-b-gray-700 border-t-0 border-x-0">
 
       {/* LEFT SIDE */}
       <div className="flex items-center gap-3">
